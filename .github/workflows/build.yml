@@ -10,11 +10,11 @@ on:
       - main
       - '!release/**'
 
-env:
-  IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
-
 # for a list of available images see https://github.com/actions/runner-images?tab=readme-ov-file#available-images
 # for available Xcode versions see https://github.com/actions/runner-images/tree/main/images/macos
+env:
+  XCODE_APP: ${{ vars.XCODE_VERSION && format('Xcode_{0}.app', vars.XCODE_VERSION) || 'Xcode.app' }}
+
 jobs:
   build:
     name: Build packages
@@ -29,7 +29,7 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Set up Xcode version
-        run: sudo xcode-select -switch /Applications/Xcode_$XCODE_VERSION.app
+        run: sudo xcode-select -switch /Applications/$XCODE_APP
 
       - name: Build and verify
         run: npm run verify

@@ -9,7 +9,7 @@ on:
 jobs:
   analyze:
     name: CodeQL Analysis
-    runs-on: ubuntu-latest
+    runs-on: macos-${{ vars.MACOS_VERSION }}
     permissions:
       actions: read
       contents: read

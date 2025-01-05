@@ -13,10 +13,13 @@ on:
           - minor
           - major
 
+env:
+  XCODE_APP: ${{ vars.XCODE_VERSION && format('Xcode_{0}.app', vars.XCODE_VERSION) || 'Xcode.app' }}
+
 jobs:
   publish-release:
     name: Publish release
-    runs-on: ubuntu-latest
+    runs-on: macos-${{ vars.MACOS_VERSION }}
     if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout repo
@@ -30,7 +33,7 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Set up Xcode version
-        run: sudo xcode-select -switch /Applications/Xcode_$XCODE_VERSION.app
+        run: sudo xcode-select -switch /Applications/$XCODE_APP
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v4

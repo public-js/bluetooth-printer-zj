@@ -12,12 +12,11 @@ on:
 env:
   IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
   IS_DBOT: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
-  IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
   lint:
     name: Lint code
-    runs-on: ubuntu-latest
+    runs-on: macos-${{ vars.MACOS_VERSION }}
     steps:
       - name: Checkout origin repo
         if: ${{ env.IS_FORK == 'false' && env.IS_DBOT == 'false' }}
