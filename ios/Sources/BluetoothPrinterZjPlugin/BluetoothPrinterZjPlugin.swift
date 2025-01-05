@@ -13,7 +13,7 @@ public class BluetoothPrinterZjPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "discover", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "connect", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "disconnect", returnType: CAPPluginReturnPromise),
-        CAPPluginMethod(name: "writeString", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "print", returnType: CAPPluginReturnPromise)
     ]
 
     @objc func discover(_ call: CAPPluginCall) {
@@ -28,7 +28,7 @@ public class BluetoothPrinterZjPlugin: CAPPlugin, CAPBridgedPlugin {
         call.unimplemented("Unavailable on iOS")
     }
 
-    @objc func writeString(_ call: CAPPluginCall) {
+    @objc func print(_ call: CAPPluginCall) {
         call.unimplemented("Unavailable on iOS")
     }
 
