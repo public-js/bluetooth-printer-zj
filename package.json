@@ -1,6 +1,6 @@
 {
   "name": "@public-js/bluetooth-printer-zj",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bluetooth printer support for Capacitor",
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
