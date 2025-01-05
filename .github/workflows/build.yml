@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - main
+      - '!release/**'
+  push:
+    branches:
+      - main
+      - '!release/**'
+
+env:
+  IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
+
+# for a list of available images see https://github.com/actions/runner-images?tab=readme-ov-file#available-images
+# for available Xcode versions see https://github.com/actions/runner-images/tree/main/images/macos
+jobs:
+  build:
+    name: Build packages
+    runs-on: macos-${{ vars.MACOS_VERSION }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js and cache
+        uses: ./.github/actions/nodejs
+
+      - name: Set up Xcode version
+        run: sudo xcode-select -switch /Applications/Xcode_$XCODE_VERSION.app
+
+      - name: Build and verify
+        run: npm run verify
+
+concurrency:
+  group: build-${{ github.head_ref }}
+  cancel-in-progress: true
