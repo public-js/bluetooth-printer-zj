@@ -20,8 +20,7 @@
     "ci:bump": "standard-version",
     "ci:github": "cc-github-releaser --prefix v",
     "prepublishOnly": "npm run build",
-    "postinstall": "node ./tools/patch-std-ver.mjs",
-    "prepare": "is-ci || husky install"
+    "prepare": "node ./tools/patch-std-ver.mjs && is-ci || husky install"
   },
   "peerDependencies": {
     "@capacitor/core": "^6.0.0"

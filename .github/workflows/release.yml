@@ -53,7 +53,7 @@ jobs:
         run: npm run verify
 
       - name: Commit changes after bump
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: release v${{ steps.bump-version.outputs.new_version }}'
           commit_options: '--no-verify'
