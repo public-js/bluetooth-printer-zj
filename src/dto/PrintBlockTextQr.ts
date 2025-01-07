@@ -4,5 +4,5 @@ export interface PrintBlockTextQr extends PrintBlockText {
   type: 'textQr';
   codeWidth: number;
   /** @default 0 */
-  mode: number;
+  mode?: number;
 }

@@ -17,8 +17,6 @@ npx cap sync
 * [`connect(...)`](#connect)
 * [`disconnect()`](#disconnect)
 * [`print(...)`](#print)
-* [`checkPermissions()`](#checkpermissions)
-* [`requestPermissions()`](#requestpermissions)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
 
@@ -71,28 +69,6 @@ print(data: PrintRequest) => Promise<void>
 | Param      | Type                                                  |
 | ---------- | ----------------------------------------------------- |
 | **`data`** | <code><a href="#printrequest">PrintRequest</a></code> |
-
---------------------
-
-
-### checkPermissions()
-
-```typescript
-checkPermissions() => Promise<PermissionStatus>
-```
-
-**Returns:** <code>Promise&lt;<a href="#permissionstatus">PermissionStatus</a>&gt;</code>
-
---------------------
-
-
-### requestPermissions()
-
-```typescript
-requestPermissions() => Promise<PermissionStatus>
-```
-
-**Returns:** <code>Promise&lt;<a href="#permissionstatus">PermissionStatus</a>&gt;</code>
 
 --------------------
 
@@ -185,14 +161,6 @@ requestPermissions() => Promise<PermissionStatus>
 | **`mode`**      | <code>number</code>   | <code>0</code> |
 
 
-#### PermissionStatus
-
-| Prop          | Type                                                        |
-| ------------- | ----------------------------------------------------------- |
-| **`connect`** | <code><a href="#permissionstate">PermissionState</a></code> |
-| **`admin`**   | <code><a href="#permissionstate">PermissionState</a></code> |
-
-
 ### Type Aliases
 
 
@@ -204,10 +172,5 @@ requestPermissions() => Promise<PermissionStatus>
 #### PrintBlock
 
 <code><a href="#printblocklf">PrintBlockLf</a> | <a href="#printblocktextraw">PrintBlockTextRaw</a> | <a href="#printblocktextdraw">PrintBlockTextDraw</a> | <a href="#printblocktextqr">PrintBlockTextQr</a></code>
-
-
-#### PermissionState
-
-<code>'prompt' | 'prompt-with-rationale' | 'granted' | 'denied'</code>
 
 </docgen-api>
